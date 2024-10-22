@@ -2,7 +2,7 @@
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
-# Scalable self-paced e-learning of statistical programming with fine-grained feedback and assessment
+# Scalable self-paced e-learning with automated feedback
 
 <!-- badges: start -->
 <!-- badges: end -->

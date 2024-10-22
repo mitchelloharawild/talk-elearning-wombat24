@@ -10,7 +10,9 @@ format:
     width: 1280
     height: 720
 filters:
+  - webr-teachr
   - custom-callouts
+  - include-code-files
 callout-appearance: simple
 ---
 
@@ -21,14 +23,37 @@ library(distributional)
 
 ## {}
 
+```{css}
+.excalidraw img {
+  position: absolute;
+  top: -40px;
+  right: -80px;
+  height: calc(var(--slide-height) + 40px*2) !important;
+  width: calc(var(--slide-width) + 80px*2) !important;
+  max-height: calc(var(--slide-height) + 40px*2) !important;
+  max-width: calc(var(--slide-width) + 80px*2) !important;
+  margin: 0 !important;
+  z-index: -1;
+}
+
+.excalidraw-code img {
+  width: 100%;
+  height: auto;
+}
+
+#title-block-header {
+  display: none;
+}
+```
+
 ::: columns
 ::: {.column width="37.5%"}
-![](media/wombat2024.svg){style="margin-left:-30px"}
+![](media/wombat2024.svg){style="margin:-30px -10px"}
 :::
 ::: {.column width="60%"}
 
 ::: {.title data-id="title"}
-Scalable self-paced e-learning of statistical programming with fine-grained feedback and assessment
+Scalable self-paced e‑learning for code with automated feedback
 :::
 
 ::: {.dateplace}
@@ -47,15 +72,818 @@ Cynthia Huang, Monash University
 
 ![](resources/projector-screen-outline.svg){.icon} [slides.mitchelloharawild.com/wombat2024](https://slides.mitchelloharawild.com/wombat2024)
 
-![](resources/github.svg){.icon} [mitchelloharawild/talk-distributional](https://github.com/mitchelloharawild/talk-elearning-wombat24)
+![](resources/github.svg){.icon} [mitchelloharawild/talk-elearning-wombat24](https://github.com/mitchelloharawild/talk-elearning-wombat24)
 
 :::
 
 :::
 :::
 
-![](backgrounds/meric-dagli-7NBO76G5JsE-unsplash.jpg){.image-left}
+![](backgrounds/amjd-rdwan--MDJDYKQz6E-unsplash.jpg){.image-left}
 
+## {}
+
+::: columns
+::: {.column width="37.5%"}
+![](media/wombat2024.svg){style="margin:-30px -10px"}
+:::
+::: {.column width="60%"}
+
+### Tools for teaching
+
+I create lots of tools to support my teaching.
+
+[Lately I've been working on tools to give students targeted feedback at scale.]{.fragment}
+
+:::{.fragment .fade-up}
+:::{.callout-tip icon=false}
+## :mortar_board: moodlequiz
+
+Easily create moodle quizzes with literate programming.
+:::
+:::
+
+:::{.fragment .fade-up}
+:::{.callout-tip icon=false}
+## :spider_web: quarto-webr-teachr
+
+Add online code exercises with automated feedback.
+:::
+:::
+
+:::
+:::
+
+![](backgrounds/amjd-rdwan--MDJDYKQz6E-unsplash.jpg){.image-left}
+
+
+## {background-image="backgrounds/element5-digital-OyCl7Y4y0Bk-unsplash.jpg" background-size="cover"}
+
+::: columns
+
+::: {.column width="20%"}
+:::
+
+::: {.column width="60%"}
+
+:::{.callout-tip icon=false}
+## :mortar_board: moodlequiz
+
+Easily create moodle quizzes with literate programming.
+:::
+
+:::
+:::
+
+## {}
+
+### Why moodle?
+
+::: columns
+::: {.column width="60%"}
+
+![](resources/moodle-logo.png){width="50%"}
+
+:::{.fragment .fade-up}
+:::{.callout-tip icon=false}
+## :mortar_board: I use it at Monash University
+
+I want to make my life easier when assessing students!
+:::
+:::
+
+:::{.fragment .fade-up}
+:::{.callout-tip icon=false}
+## :tada: It's free and open source
+
+My software is also free and open source! 
+
+This makes the tools more accessible.
+:::
+:::
+
+
+
+:::
+:::
+
+![](backgrounds/ivan-aleksic-PDRFeeDniCk-unsplash.jpg){.image-right}
+
+
+## {}
+
+### Creating a quiz in Moodle
+
+::: columns
+::: {.column width="60%"}
+![](resources/moodle-question.png)
+:::
+:::
+
+![](backgrounds/ivan-aleksic-PDRFeeDniCk-unsplash.jpg){.image-right}
+
+## {}
+
+### Literate programming quizzes
+
+::: columns
+::: {.column width="60%"}
+
+:::{.callout-note}
+## *Literate programming*
+
+An approach for creating documents *or* code using **both writing and code** in the **same place**
+
+:::{.fragment}
+Widely used literate programming tools include:
+
+* Quarto
+* Jupyter notebooks
+* R Markdown
+:::
+:::
+
+:::{.fragment .fade-up}
+:::{.callout-tip}
+## Statistics education :heart: Literate programming
+
+Literate programming for statistical quizzes is a **great match**! We work closely with data and code, and want to test students on these skills
+:::
+:::
+
+:::
+:::
+
+![](backgrounds/isabela-kronemberger-OegFhZfw6Ok-unsplash.jpg){.image-right}
+
+## {}
+
+### Literate programming quizzes
+
+::: columns
+::: {.column width="60%"}
+
+:::{.callout-caution icon=false}
+## :boom: This isn't a new idea...
+
+The *exams* package for R has been on CRAN for **over 15 years**!
+
+:::{.fragment .fade-up}
+
+![](resources/r-exams.png)
+
+*Lots of information at <https://www.r-exams.org/>*
+:::
+
+:::
+
+:::
+:::
+
+![](backgrounds/isabela-kronemberger-OegFhZfw6Ok-unsplash.jpg){.image-right}
+
+
+## {}
+
+::: columns
+::: {.column width="60%"}
+
+### Literate programming quizzes
+
+*Why re-invent the R/exams wheel?*
+
+:::{.callout-tip icon=false}
+## :white_check_mark: It ticks a lot of boxes
+
+* Uses R Markdown to create *dynamic* questions with code
+* Supports random repetition of quiz questions
+* Outputs to Moodle, Canvas, OpenOlat, or Blackboard
+
+:::
+
+:::{.fragment .fade-up}
+
+:::{.callout-caution icon=false}
+## :x: But it leaves some things to be desired
+
+* Defining questions, answers, and feedback is difficult
+* Each question requires separate R Markdown documents
+
+:::
+
+:::
+
+:::
+:::
+
+![](backgrounds/isabela-kronemberger-OegFhZfw6Ok-unsplash.jpg){.image-right}
+
+## {}
+
+::: columns
+::: {.column width="60%"}
+
+### Literate programming quizzes
+
+*Using R/exams*
+
+``` {.markdown include="resources/rexams_boxhist.Rmd" filename="boxhist.Rmd [106 lines]"}
+```
+
+:::
+:::
+
+![](backgrounds/isabela-kronemberger-OegFhZfw6Ok-unsplash.jpg){.image-right}
+
+
+## {}
+
+::: columns
+::: {.column width="60%"}
+
+### Literate programming quizzes
+
+*Using R/exams*
+
+![](resources/rexams_boxhist.png)
+
+:::
+:::
+
+![](backgrounds/isabela-kronemberger-OegFhZfw6Ok-unsplash.jpg){.image-right}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Introducing moodlequiz!
+
+
+:::{.callout-tip icon=false}
+## :white_check_mark: Literate programming for quizzes with literate questions
+
+* Questions are specified within the writing
+* An entire quiz with multiple questions in one file 
+* Consistent with R Markdown and Quarto writing style
+* Prioritises creation of `cloze` question types
+* Supports random repetition of quiz questions
+
+:::
+
+:::{.fragment .fade-up}
+
+:::{.callout-caution icon=false}
+## :x: Some downsides (and future work)
+
+* Only outputs *Moodle XML* (but can work in other LMS).
+* In early development, things will change and break.
+* Available on GitHub, about to be published on CRAN.
+
+:::
+:::
+
+:::
+:::
+
+![](backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg){.image-left}
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Introducing moodlequiz!
+
+*How it works*
+
+``` {.markdown include="demo/completed.Rmd" filename="demo.Rmd [88 lines]"}
+```
+
+:::
+:::
+
+![](backgrounds/david-pisnoy-46juD4zY1XA-unsplash.jpg){.image-left}
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### More moodlequiz to come
+
+:::{.fragment .fade-up}
+:::{.callout-tip icon=false}
+## :writing_hand: Create a quarto template for Moodle XML
+
+Allows use of quarto extensions and better support for other programming languages.
+:::
+:::
+
+:::{.fragment .fade-up}
+:::{.callout-tip icon=false}
+## :teacher: Support quiz formats for other LMS
+
+Conceptually literate programming of quizzes isn't specific to Moodle.
+:::
+:::
+
+:::{.fragment .fade-up}
+:::{.callout-tip icon=false}
+## :technologist: Add capability of running code in the quiz
+
+Using WebAssembly (WASM) we can run code in the web browser alongside a quiz.
+:::
+:::
+
+:::
+:::
+
+![](backgrounds/chris-lee-70l1tDAI6rM-unsplash.jpg){.image-left}
+
+## {background-image="backgrounds/element5-digital-OyCl7Y4y0Bk-unsplash.jpg" background-size="cover"}
+
+::: columns
+
+::: {.column width="20%"}
+:::
+
+::: {.column width="60%"}
+:::{.callout-tip icon=false}
+## :spider_web: quarto-webr-teachr
+
+Add online code exercises with automated feedback.
+:::
+:::
+:::
+
+## {.excalidraw}
+
+::: notes
+MONASH
+- We had an problem with teaching statistics at Monash University.
+- Statistical programming with R is used widely in our courses
+- However not all students knew R (different study paths)
+- So at least 1 week of each semester was lost teaching basic R instead of the course concepts 
+- (and tutors had to deal with basic R problems)
+:::
+
+![](excalidraw/journey-1.svg)
+
+
+
+## {.excalidraw}
+
+::: notes
+For TeachR, I mostly do strategy and project coordination
+
+- Emi, Mitch, Daidai and Jessica started this project with learnr.numbat.space
+- Mitch is the technical brains and frankenstein experimenter
+- Rob J. Hyndman & Monash EBS provide funding
+- Krisanat Anukarnsakulchularp and Tashya Sathyajit helped us write pilot modules and develop interactive exercises
+:::
+
+![](excalidraw/team-me.svg)
+
+## {.excalidraw}
+
+::: notes
+LEARNR
+- The learnr project solved most of these problems
+- We adapted ines' spacy-course template for online exercises which runs and checks code using mybinder.org
+- Students without R skills were guided to the learnr interactive materials
+- Units which use R for statistics no longer need to teach R.
+:::
+
+![](excalidraw/journey-2.svg)
+
+## {.excalidraw}
+
+![](excalidraw/team-learnr.svg)
+
+## {background-iframe="https://learnr.numbat.space/" background-interactive=true}
+
+::: notes
+> minor problems accumulating into a need to transition:
+> * Exercises took a while to run (from 15 seconds to 2 minutes or more)
+> * Sometimes the server wouldn't respond, breaking the core exercise and feedback loop
+> * We were using far too much of mybinder.org (at times ~50%!)
+:::
+
+
+## {}
+
+<!-- TODO: -->
+
+<!-- * used roughly half of binder's services -->
+<!-- * unreliable remote connections -->
+<!-- * remote code execution? (callback to shiny tutorial) -->
+
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Sustainable and scalable?
+
+::: {.callout-tip icon=false}
+## :sparkling_heart: Problem solved?
+
+The learnr website has helped us teach basic R to students.
+
+We spend less class time troubleshooting R problems.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-important icon=false}
+## :boom: Growing pains
+
+Over time, problems began to accumulate...
+
+::: {.incremental}
+* Exercises took a while to launch (sometimes >2 minutes)
+* Requires a reliable internet connection
+* Fully reliant on mybinder.org generosity
+* Excessive use of mybinder.org (at times ~50%!)
+:::
+
+:::
+:::
+
+:::
+:::
+
+![](backgrounds/sindy-sussengut-IcycHW9DveY-unsplash.jpg){.image-left}
+
+
+
+## {.excalidraw}
+
+::: notes
+quarto-webr-teachr
+- opportunity to extend and improve previous content and exercise design
+- overcomes the issues above
+- exercises can be placed in more places (maybe even this talk?)
+- a bit of a WIP
+:::
+
+![](excalidraw/journey-3.svg)
+
+
+## {.excalidraw}
+
+![](excalidraw/team-all.svg)
+
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Rewriting learnr.numbat.space
+
+![](resources/webr-learnr.png)
+
+<https://numbats.github.io/monash-learnr-modules/>
+
+:::
+:::
+
+![](backgrounds/jess-bailey-FHCVK6Vyvwc-unsplash.jpg){.image-right}
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Workshop exercises
+
+![](resources/webr-workshop.png)
+
+<https://workshop.nectric.com.au/user2024/>
+
+:::
+:::
+
+![](backgrounds/jess-bailey-FHCVK6Vyvwc-unsplash.jpg){.image-right}
+
+
+## {.excalidraw}
+
+::: notes
+There are two main elements of a webr-teachr chunk:
+
+1. The code given to the student
+2. The code to check the answer
+
+These are separated with ??? (the check separator)
+:::
+
+![](excalidraw/anatomy-1.svg)
+
+
+## {.excalidraw} 
+
+::: notes
+It is similar to a normal R chunk with a couple tweaks:
+
+1. The *cloze* helper <<>> for fill in the blanks (cloze) code exercises
+2. The `???` check separator
+3. The code for checking the answer (output comparison tests)
+:::
+
+![](excalidraw/anatomy-2.svg)
+
+
+<!-- ## {.excalidraw} -->
+
+<!-- ![](excalidraw/ingredients.svg) -->
+
+
+## {}
+
+::: columns
+
+::: {.column width="40%"}
+:::
+
+::: {.column width="60%"}
+
+### Ingredients of code assessment
+
+
+:::{.fragment .fade-up}
+:::{.callout-tip icon=false}
+## :bar_chart: Check the results (outputs)
+
+See if the code produced the expected output.
+All printed results are available in `.printed`.
+Also check `.errored`, `.warned`, `.messaged`.
+
+[**Tip**: Code chunks can produce multiple outputs.]{.fragment}
+:::
+:::
+
+:::{.fragment .fade-up}
+:::{.callout-tip icon=false}
+## :writing_hand: Check the code (inputs)
+
+Inspect the code to see how they've produced the output.
+The raw code is in `.src` and parsed AST in `.code`.
+:::
+:::
+
+:::{.fragment .fade-up}
+:::{.callout-tip icon=false}
+## :earth_asia: Explore the environment
+
+Check for contents in the environment, such as saved objects, loaded packages, file system and RNG seed state.
+:::
+:::
+
+
+:::
+:::
+
+![](backgrounds/david-kirchner-x4dE0kSHT_U-unsplash.jpg){.image-left}
+
+
+
+## Assessment using Outputs
+
+::: notes
+- demo `function(){sample(0:6)}` -> hint
+- demo `function(){sample(0:6), size = 1}` -> hint
+- demo solution button -> pass
+- demo `function(){3L}` -> pass (foreshadowing next test)
+:::
+
+::: columns
+::: {.column .excalidraw-code width="53%"}
+![](excalidraw/code-output.svg)
+:::
+
+::: {.column width="47%"}
+```{webr-teachr}
+# Write some code to roll a dice
+roll_a_dice <- <<function(){sample(1:6, size = 1L)}>>
+
+# Then, roll the dice!
+roll_a_dice()
+  
+???
+
+rolls <- sapply(seq_len(1000), function(x) roll_a_dice())
+c(
+  "You should try your function!" = !exists_in(.printed, is.integer) && !search_ast(.code, .fn = roll_a_dice),
+  "Your function should return a single dice value." = length(roll_a_dice()) != 1L,
+  "Your function should return an integer." = !is.integer(rolls),
+  "Your function returns dice numbers less than 1." = min(rolls) < 1L,
+  "Your function returns dice numbers more than 6." = max(rolls) > 6L
+)
+```
+
+
+:::
+:::
+
+
+## Assessment using the Environment
+
+::: notes
+- demo `function(){3L}` -> fail
+:::
+
+::: columns
+::: {.column .excalidraw-code width="53%"}
+![](excalidraw/code-environment.svg)
+:::
+
+::: {.column width="47%"}
+```{webr-teachr}
+# Write some code to roll a dice
+roll_a_dice <- <<function(){sample(1:6, size = 1L)}>>
+
+# Then, roll the dice!
+roll_a_dice()
+  
+???
+
+old_seed <- .Random.seed
+rolls <- sapply(seq_len(1000), function(x) roll_a_dice())
+c(
+  "You should try your function!" = !exists_in(.printed, is.integer) && !search_ast(.code, .fn = roll_a_dice),
+  "Your function should return a single dice value." = length(roll_a_dice()) != 1L,
+  "Your function should return an integer." = !is.integer(rolls),
+  "Your function returns dice numbers less than 1." = min(rolls) < 1L,
+  "Your function returns dice numbers more than 6." = max(rolls) > 6L,
+  "Your function should randomly select dice values." = identical(old_seed, .Random.seed)
+)
+```
+
+:::
+:::
+
+
+## Assessment using Inputs
+
+::: notes
+- demo `function(){as.integer(runif(1, 1, 7))}` -> fail
+:::
+
+::: columns
+::: {.column .excalidraw-code width="53%"}
+![](excalidraw/code-input.svg)
+:::
+
+::: {.column width="47%"}
+```{webr-teachr}
+# Write some code to roll a dice
+roll_a_dice <- <<function(){sample(1:6, size = 1L)}>>
+
+# Then, roll the dice!
+roll_a_dice()
+  
+???
+
+old_seed <- .Random.seed
+rolls <- sapply(seq_len(1000), function(x) roll_a_dice())
+uses_sample <- search_ast(.code, .fn = sample)
+c(
+  "Your code should use the sample() function as shown in class." = !uses_sample,
+  "You should try your function!" = !exists_in(.printed, is.integer) && !search_ast(.code, .fn = roll_a_dice),
+  "Your function should return a single dice value." = length(roll_a_dice()) != 1L,
+  "Your function should return an integer." = !is.integer(rolls),
+  "Your function returns dice numbers less than 1." = min(rolls) < 1L,
+  "Your function returns dice numbers more than 6." = max(rolls) > 6L,
+  "Your function should randomly select dice values." = identical(old_seed, .Random.seed)
+)
+```
+
+:::
+:::
+
+## Assessment of Inputs (code style)
+
+::: notes
+- demo `function(){sample(1:6, size = 1)}` -> pass, with tip
+:::
+
+::: columns
+::: {.column .excalidraw-code width="53%"}
+![](excalidraw/code-style.svg)
+:::
+
+::: {.column width="47%"}
+```{webr-teachr}
+# Write some code to roll a dice
+roll_a_dice <- <<function(){sample(1:6, size = 1L)}>>
+
+# Then, roll the dice!
+roll_a_dice()
+  
+???
+
+old_seed <- .Random.seed
+rolls <- sapply(seq_len(1000), function(x) roll_a_dice())
+uses_sample <- search_ast(.code, .fn = sample)
+if(search_ast(.code, .expr = sample(size = 1))) {
+  cat("💡 It's better to use integers (size = 1L) instead of numeric/double (size = 1)\n")
+}
+c(
+  "Your code should use the sample() function as shown in class." = !uses_sample,
+  "You should try your function!" = !exists_in(.printed, is.integer) && !search_ast(.code, .fn = roll_a_dice),
+  "Your function should return a single dice value." = length(roll_a_dice()) != 1L,
+  "Your function should return an integer." = !is.integer(rolls),
+  "Your function returns dice numbers less than 1." = min(rolls) < 1L,
+  "Your function returns dice numbers more than 6." = max(rolls) > 6L,
+  "Your function should randomly select dice values." = identical(old_seed, .Random.seed)
+)
+```
+
+:::
+:::
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Quarto Live
+
+::: {.callout-tip icon=false}
+## :tada: Official quarto WASM extension
+
+Recently the `quarto-live` was released.
+
+It offers many nice advantages:
+
+* maintained by the webr developers
+* runs R (via webr) and Python (via Pyodide)
+* better support for interactive results
+
+:::
+
+:::
+:::
+
+![](backgrounds/max-saeling-_CGxNOLM1gQ-unsplash.jpg){.image-right}
+
+## {}
+
+::: columns
+
+::: {.column width="60%"}
+
+### Quarto Live
+
+::: {.callout-tip icon=false}
+## :mortar_board: The teaching use-case is encouraged
+
+Much like `quarto-webr-teachr` you can automatically assess the code using:
+
+* the code output (`.result`, `.evaluate_result`)
+* the code input (`.user_code`)
+* the evaluation environment (`.envir_result`)
+
+[**Note**: The same principles of testing code applies here too!]{.fragment}
+
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-caution icon=false}
+## :eyes: Watch this space
+
+It's an exciting time for online statistics education!
+
+The technology for automated assessment of code exercises is rapidly evolving thanks to WebAssembly (and webr).
+:::
+:::
+
+:::
+:::
+
+![](backgrounds/max-saeling-_CGxNOLM1gQ-unsplash.jpg){.image-right}
 
 ## Thanks for your time!
 
@@ -65,10 +893,10 @@ Cynthia Huang, Monash University
 ::: {.callout-tip}
 ## Final remarks
 
-*
-* 
-*
-*
+* Statistics assessments should test theory AND code.
+* Use small automated quizzes to evaluate student performance and give feedback at scale.
+* Literate programming makes creating quizzes and exercises easy.
+* Using webr to run R in the browser is great for teaching.
 
 :::
 
@@ -80,7 +908,7 @@ Cynthia Huang, Monash University
 
 ![](resources/projector-screen-outline.svg){.icon} [slides.mitchelloharawild.com/wombat2024](https://slides.mitchelloharawild.com/wombat2024)
 
-![](resources/github.svg){.icon} [mitchelloharawild/talk-distributional](https://github.com/mitchelloharawild/talk-elearning-wombat24)
+![](resources/github.svg){.icon} [mitchelloharawild/talk-elearning-wombat24](https://github.com/mitchelloharawild/talk-elearning-wombat24)
 
 :::
 
