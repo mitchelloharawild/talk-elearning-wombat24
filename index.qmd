@@ -62,8 +62,6 @@ Scalable self-paced e‑learning for code with automated feedback
 
 Mitchell O'Hara-Wild, Monash University
 
-Cynthia Huang, Monash University
-
 ::: {.callout-link}
 
 ## Useful links
@@ -560,9 +558,14 @@ quarto-webr-teachr
 
 ### Rewriting learnr.numbat.space
 
+Early work in progress (ready S1 2025)
+
+:::{.fragment .fade-in}
+
 ![](resources/webr-learnr.png)
 
 <https://numbats.github.io/monash-learnr-modules/>
+:::
 
 :::
 :::
@@ -577,9 +580,14 @@ quarto-webr-teachr
 
 ### Workshop exercises
 
+Completed my useR! 2024 workshop.
+
+::: {.fragment .fade-in}
+
 ![](resources/webr-workshop.png)
 
 <https://workshop.nectric.com.au/user2024/>
+:::
 
 :::
 :::
