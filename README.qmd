@@ -11,9 +11,9 @@ format: gfm
 
 Slides and notes for an invited talk at WOMBAT 2024 (23rd October 2024) in Melbourne, Australia.
 
-<!-- A recording of this presentation is available on YouTube here: <https://www.youtube.com/watch?v=> -->
+A recording of this presentation is available on YouTube here: <https://www.youtube.com/watch?v=Y9p6XwAI5Zw>
 
-<!-- [![](preview.jpg)](https://www.youtube.com/watch?v=) -->
+[![](preview.jpg)](https://www.youtube.com/watch?v=Y9p6XwAI5Zw)
 
 #### Abstract
 
